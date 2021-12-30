@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Final Project DBP</string>
+    <string name="tittle1_home">Welcome to Hospitales.com APP</string>
+    <string name="tittle2_home">Sign in as: </string>
+    <string name="tittle1_paciente_home">For patients</string>
+    <string name="recuadro_CORREO">EMAIL</string>
+    <string name="recuadro_contraseña">Password</string>
+    <string name="recuadro_contraseñaC">Same Password</string>
+    <string name="tittle2_ingresar_datos">Type your data:</string>
+    <string name="tittle3_aun_no_registra">¿You don\'t have an account?</string>
+    <string name="tittle1_doctor_home">For Doctors</string>
+    <string name="boton_paciente">Patient</string>
+    <string name="boton_doctor">Doctor</string>
+    <string name="boton_ingresar">Sign in</string>
+    <string name="boton_crear_cuenta">Create an account</string>
+    <string name="tittle1_doctor_registro">Register</string>
+    <string name="tittle2_doctor_registro">Doctor Number</string>
+    <string name="tittle3_registrado">Registrado con Exito!</string>
+    <string name="tittle_register">Register</string>
+    <string name="regist">Sing up!</string>
+    <string name="paciente_main_tittle1">Form</string>
+    <string name="recuadro_nombre">Name</string>
+    <string name="recuadro_edad">Age</string>
+    <string name="recuadro_enfermedad">Illness</string>
+    <string name="paciente_main_tittle2">¿Do you have a disabilities?</string>
+    <string name="paciente_main_b1">Send Form</string>
+    <string name="recuadro_DNI">DNI</string>
+</resources>

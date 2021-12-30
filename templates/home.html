@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones</title>
+</head>
+<body>
+<center><h1>Actualice los datos de un paciente</h1></center>
+<br>
+<form action="/home/actualizar" method="POST">
+    <div>
+        <center><label>DNI:</label></center>
+        <br>
+        <center><input type="number" id="DNI" name="DNI"/></center>
+        <br>
+    </div>
+    <div>
+
+        <center><label>Apellidos y Nombres:</label></center>
+        <br>
+        <center><input type="text" id="nombre" name="nombre"/></center>
+        <br>
+    </div>
+    <div>
+        <center><label>Edad:</label></center>
+        <br>
+        <center><input type="text" id="edad" name="edad"/></center>
+        <br>
+    </div>
+    <div>
+        <center><label>Especialidad:</label></center>
+        <br>
+        <center><input type="text" id="especialidad" name="especialidad"/></center>
+        <br>
+    </div>
+    <div>
+        <br>
+        <center><input type="submit" value="actualizar"/></center>
+        <br>
+    </div>
+</form>
+<center><h1>Borre a un paciente</h1></center>
+<br>
+<form action="/home/borrar" method="POST">
+    <div>
+        <center><label>DNI:</label></center>
+        <br>
+        <center><input type="number" id="DNI" name="DNI"/></center>
+        <br>
+    </div>
+    <div>
+        <br>
+        <center><input type="submit" value="borrar"/></center>
+        <br>
+    </div>
+</form>
+<h1>Pacientes:</h1>
+<br>
+<ul id="pacientes">
+    {% for d in data %}
+    <li>{{d.dni}}</li>
+    {% endfor %}
+</ul>
+<style type="text/css">
+    body {
+        color: white;
+        background-color: 00bfff }
+    body{
+        background: linear-gradient(#107fe6 , #77cced);
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        animation: bg 1s infinite linear;
+    }
+    p {
+        font-family: "Homer Simpson UI";
+    }
+</style>
+</body>
+</html>

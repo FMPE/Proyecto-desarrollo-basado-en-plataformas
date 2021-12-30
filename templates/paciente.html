@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para pacientes</title>
+    <style>
+        .hidden {
+            display: none
+        }
+    </style>
+    <style>
+        .toshow {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+<h1>Registrese o consulte sus datos</h1>
+<form id="form">
+    <div>
+        <label>DNI:</label>
+        <br>
+        <input type="text" id="DNI" name="DNI"/>
+    </div>
+    <div>
+        <label>Apellidos y Nombres:</label>
+        <br>
+        <input type="text" id="nombre" name="nombre"/>
+    </div>
+    <div>
+        <label>Edad:</label>
+        <br>
+        <input type="text" id="edad" name="edad"/>
+    </div>
+    <div>
+        <label>Especialidad:</label>
+        <br>
+        <input type="text" id="especialidad" name="especialidad"/>
+    </div>
+    <div>
+        <label>Doctores disponibles:</label>
+        <br>
+        <select doctor="doctor">
+            <option value="femenino1">Doctor1</option>
+            <option value="masculino1">Doctor2</option>
+        </select>
+        <br>
+    </div>
+    <div>
+        <br>
+        <input type="submit" value="Registrar"/>
+
+    </div>
+    <div></div>
+    <div id="error" class="hidden">Ocurrió un error!</div>
+    <div id="ok" class="toshow">REGISTRADO CON EXITO!</div>
+    <ul id="pacientes">
+        {% for d in data %}
+        <li>{{d.dni}}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        document.getElementById('form').onsubmit = function(e) {
+            e.preventDefault();
+            fetch('/paciente/crear', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'DNI': document.getElementById('DNI').value,
+                    'nombre': document.getElementById('nombre').value,
+                    'edad': document.getElementById('edad').value,
+                    'especialidad': document.getElementById('especialidad').value
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(function(response){
+                    return response.json();
+                    return self.wsgi_app(environ, start_response);
+                })
+                .then(function(jsonResponse) {
+                    const liItem = document.createElement('LI');
+                    liItem.innerHTML = jsonResponse['DNI'];
+                    document.getElementById('error').className = 'hidden';
+                    document.getElementById('ok').className = '';
+                })
+                .catch(function(error) {
+                    document.getElementById('error').className = '';
+                    document.getElementById('ok').className = 'hidden';
+                });
+        }
+    </script>
+    <style type="text/css">
+        body {
+            color: white;
+            background-color: 00bfff }
+
+        body{
+            background: linear-gradient(#04b809 , #57d95b);
+
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: bg 1s infinite linear;
+        }
+        p {
+            font-family: "Homer Simpson UI";
+        }
+
+    </style>
+</body>
+</html>

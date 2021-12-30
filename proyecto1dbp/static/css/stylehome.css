@@ -1,0 +1,16 @@
+body {
+      color: white;
+      background-color: 00bfff ;}
+ body{
+          background-image: url("blueprint.gif");
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: bg 1s infinite linear;
+  }
+  p {
+      font-family: "Homer Simpson UI";
+  }
+form {
+     text-align: center;
+}

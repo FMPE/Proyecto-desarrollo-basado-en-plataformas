@@ -1,0 +1,19 @@
+body{
+color: white;
+          background-color: 00bfff;
+}
+body{
+
+        background-image: url("lark.gif");
+
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: bg 1s infinite linear;
+  }
+form {
+     text-align: center;
+}
+     p {
+font-family: "Homer Simpson UI";
+}

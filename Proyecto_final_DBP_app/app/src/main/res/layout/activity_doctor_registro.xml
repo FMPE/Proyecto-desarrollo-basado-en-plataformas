@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        android:background="@drawable/backmore"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/fondo_doctores1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tittle1_doctor_home"
+                android:layout_gravity="center"
+                android:textSize="32sp"
+                android:layout_marginTop="100dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/sfpro_medium"
+
+
+                ></TextView>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tittle1_doctor_registro"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sfpro_medium"
+            />
+
+
+        <EditText
+            android:id="@+id/email_doctor_registro"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#263238"
+            android:hint="@string/recuadro_CORREO"
+            android:inputType="text"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:textColorHint="#BDBDBD"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sfpro_medium"/>
+
+
+        <EditText
+            android:id="@+id/password_doctor_registro"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#263238"
+            android:hint="@string/recuadro_contraseña"
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:textColorHint="#BDBDBD"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sfpro_medium"/>
+        <EditText
+            android:id="@+id/Cpassword_doctor"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#263238"
+            android:hint="@string/recuadro_contraseñaC"
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:textColorHint="#BDBDBD"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sfpro_medium"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tittle_register"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#2e7d32"
+            android:onClick="registerDoctor"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sfpro_medium"
+            android:textColor="#e0e0e0"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

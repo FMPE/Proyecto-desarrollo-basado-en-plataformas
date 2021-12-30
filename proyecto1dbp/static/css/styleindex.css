@@ -1,0 +1,17 @@
+html,body{padding: 0; margin: 0;}
+body{
+              background-image: url("iron.gif");
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          animation: bg 1s infinite linear;
+          color: white;
+          background-color: 00bfff;
+      }
+p {
+          font-family: "Homer Simpson UI";
+      }
+form {
+     text-align: center;
+}

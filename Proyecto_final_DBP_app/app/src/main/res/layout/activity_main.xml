@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        android:background="@drawable/bg1"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical">
+
+            <ahmed.easyslider.EasySlider
+                android:id="@+id/slide"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tittle2_home"
+            android:layout_gravity="center"
+            android:layout_marginTop="120dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sfpro_medium"
+            />
+
+
+        <Button
+            android:id="@+id/boton_paciente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#5e92f3"
+            android:onClick="openPacienteHome"
+            android:text="@string/boton_paciente"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sfpro_medium"
+            android:textColor="#e0e0e0"/>
+
+
+
+        <Button
+            android:id="@+id/boton_doctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="9dp"
+            android:backgroundTint="#5e92f3"
+            android:fontFamily="@font/sfpro_medium"
+            android:onClick="openDoctorHome"
+            android:text="@string/boton_doctor"
+            android:textAllCaps="false"
+            android:layout_marginBottom="190dp"
+            android:textColor="#e0e0e0"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

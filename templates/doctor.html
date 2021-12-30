@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrese o haga login</title>
+    <style>
+        .hidden {
+            display: none
+        }
+    </style>
+    <style>
+        .toshow {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+<center><h1>Registrese</h1></center>
+<form id="form">
+    <div>
+        <center><label>DNI:</label></center>
+        <br>
+        <center><input type="number" id="DNI" name="DNI"/></center>
+        <br>
+    </div>
+    <div>
+        <center><label>contraseña:</label></center>
+        <br>
+        <center><input type="password" id="contrasenha" name="contrasenha"/></center>
+        <br>
+    </div>
+    <div>
+        <center><label>número de doctor:</label></center>
+        <br>
+        <center><input type="number" id="numero" name="numero"/></center>
+        <br>
+    </div>
+    <div>
+        <br>
+        <center><input type="submit" value="Registrar"/></center>
+    </div>
+</form>
+<div id="error" class="hidden">Ocurrió un error!</div>
+<div id="ok" class="toshow">REGISTRADO CON EXITO!</div>
+<ul id="doctores">
+    {% for d in data %}
+    <li>{{d.dni}}</li>
+    {% endfor %}
+</ul>
+<script>
+    document.getElementById('form').onsubmit = function(e) {
+        e.preventDefault();
+        fetch('/doctor/crear', {
+            method: 'POST',
+            body: JSON.stringify({
+                'DNI': document.getElementById('DNI').value,
+                'contrasenha': document.getElementById('contrasenha').value,
+                'numero': document.getElementById('numero').value
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function(response){
+                return response.json();
+                return self.wsgi_app(environ, start_response);
+            })
+            .then(function(jsonResponse) {
+                const liItem = document.createElement('LI');
+                liItem.innerHTML = jsonResponse['DNI'];
+                document.getElementById('doctores').appendChild(liItem);
+                document.getElementById('error').className = 'hidden';
+                document.getElementById('ok').className = '';
+            })
+            .catch(function(error) {
+                document.getElementById('error').className = '';
+                document.getElementById('ok').className = 'hidden';
+            });
+    }
+</script>
+<center><h1>Si ya esta registrado, haga login</h1></center>
+<form action="/doctor/login" method="POST">
+    <div>
+        <center><label>DNI:</label></center>
+        <br>
+        <center><input type="number" id="DNI" name="DNI"/></center>
+        <br>
+    </div>
+    <div>
+        <center><label>contraseña:</label></center>
+        <br>
+        <center><input type="password" id="contrasenha" name="contrasenha"/></center>
+        <br>
+    </div>
+    <div>
+        <br>
+        <center><input type="submit" value="login"/></center>
+        <br>
+    </div>
+</form>
+<style type="text/css">
+
+    body{
+        color: white;
+        background: linear-gradient(#107fe6 , #77cced);
+
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        animation: bg 1s infinite linear;
+    }
+</style>
+</body>
+
+</html>

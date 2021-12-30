@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Proyecto final DBP</string>
+    <string name="tittle1_home">Bienvenido a la app de Hospitales.com</string>
+    <string name="tittle2_home">Ingresar como:</string>
+    <string name="tittle1_paciente_home">Para pacientes</string>
+    <string name="recuadro_CORREO">Correo</string>
+    <string name="recuadro_contraseña">Constraseña</string>
+    <string name="recuadro_contraseñaC">Repita contraseña</string>
+    <string name="tittle2_ingresar_datos">Ingresa tus datos:</string>
+    <string name="tittle3_aun_no_registra">¿No tienes una cuenta?</string>
+    <string name="tittle1_doctor_home">Para doctores</string>
+    <string name="boton_paciente">Paciente</string>
+    <string name="boton_doctor">Doctor</string>
+    <string name="boton_ingresar">Ingresar</string>
+    <string name="boton_crear_cuenta">Crear una cuenta</string>
+    <string name="tittle1_doctor_registro">Registro</string>
+    <string name="tittle2_doctor_registro">Número de Doctor</string>
+    <string name="tittle3_registrado">Registrado con éxito</string>
+    <string name="tittle_register">Registrate</string>
+    <string name="regist">¡Registrese!</string>
+    <string name="paciente_main_tittle1">Formulario</string>
+    <string name="recuadro_nombre">Nombre</string>
+    <string name="recuadro_edad">Edad</string>
+    <string name="recuadro_enfermedad">Enfermedad</string>
+    <string name="paciente_main_tittle2">¿Presenta alguna discapacidad?</string>
+    <string name="paciente_main_b1">Enviar Formulario</string>
+    <string name="recuadro_DNI">DNI</string>
+</resources>

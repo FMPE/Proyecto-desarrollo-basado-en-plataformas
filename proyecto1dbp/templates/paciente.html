@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<section>
+<head >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title >Para pacientes</title>
+    <link href="../static/css/style.css" rel="stylesheet">
+<style>
+    body{
+
+        background-image: url("../static/css/blueprint.jpg");
+}
+form {
+     text-align: center;
+}
+</style>
+     <style>
+      .hidden {
+          display: none
+      }
+  </style>
+   <style>
+       .toshow {
+           display: none
+       }
+   </style>
+
+
+</head>
+
+<body>
+
+  <center><h1>Registrese o consulte sus datos</h1></center>
+  <form id="form">
+      <div>
+          <label>DNI:</label>
+          <br>
+          <input type="number" id="DNI" name="DNI"/>
+      </div>
+       <br>
+      <div>
+          <label>Apellidos y Nombres:</label>
+          <br>
+          <input type="text" id="nombre" name="nombre"/>
+      </div>
+       <br>
+      <div>
+          <label>Edad:</label>
+          <br>
+          <input type="number" id="edad" name="edad"/>
+      </div>
+       <br>
+      <div>
+        <label>Sexo:</label>
+        <br>
+        <input type="text" id="sexo" name="sexo"/>
+    </div>
+       <br>
+      <div>
+          <label>Caso:</label>
+          <br>
+          <input type="text" id="caso" name="caso"/>
+      </div>
+       <br>
+      <div>
+          <label>Doctores disponibles:</label>
+          <br>
+          <select id="doctor" doctor="doctor">
+            {% for d in data %}
+              <option class="selected" data-id="{{d.dni}}">{{d.nombre}}</option>
+            {% endfor %}
+          </select>
+          <br>
+      </div>
+       <br>
+      <div>
+          <br>
+          <input type="submit" value="Registrar"/>
+      </div>
+       <br>
+      <div></div>
+    <div id="error" class="hidden">Ocurrió un error!</div>
+    <div id="ok" class="toshow">REGISTRADO CON EXITO!</div>
+
+    <script>
+      document.getElementById('form').onsubmit = function(e) {
+          e.preventDefault();
+          const element = document.getElementById('doctor');
+          console.log(element.options[element.selectedIndex].getAttribute('data-id'));
+          fetch('/paciente/crear', {
+              method: 'POST',
+              body: JSON.stringify({
+                  'DNI': document.getElementById('DNI').value,
+                  'nombre': document.getElementById('nombre').value,
+                  'edad': document.getElementById('edad').value,
+                  'sexo': document.getElementById('sexo').value,
+                  'caso': document.getElementById('caso').value,
+                  'doctor_dni': element.options[element.selectedIndex].getAttribute('data-id')
+              }),
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+          .then(function(response){
+              return response.json();
+              return self.wsgi_app(environ, start_response);
+          })
+          .then(function(jsonResponse) {
+              const liItem = document.createElement('LI');
+              liItem.innerHTML = jsonResponse['DNI'];
+              document.getElementById('error').className = 'hidden';
+              document.getElementById('ok').className = '';
+          })
+          .catch(function(error) {
+              document.getElementById('error').className = '';
+              document.getElementById('ok').className = 'hidden';
+          });
+      }
+  </script>
+  </form>
+
+</body>
+    </section>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funciones</title>
+    <link rel="stylesheet" href="../static/css/stylehome.css" type="text/css">
+
+  <style>
+    body{
+        background-image: url("../static/css/blueprint.jpg");
+            }
+    form {
+     text-align: center;
+    }
+  </style>
+
+</head>
+<body>
+<center><h1>Actualice los datos de un paciente</h1></center>
+<br>
+<form action="/home/actualizar" method="POST">
+  <div>
+     <label>DNI:</label>
+      <br>
+      <input type="number" id="DNI" name="DNI"/>
+      <br>
+  </div>
+     <br>
+  <div>
+ 
+      <label>Apellidos y Nombres:</label>
+      <br>
+      <input type="text" id="nombre" name="nombre"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <label>Edad:</label>
+      <br>
+      <input type="text" id="edad" name="edad"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <label>Sexo:</label>
+      <br>
+      <input type="text" id="sexo" name="sexo"/>
+      <br>
+  </div>
+     <br>
+  <div>
+    <label>Caso:</label>
+    <br>
+    <input type="text" id="caso" name="caso"/>
+    <br>
+  </div>
+     <br>
+  <div>
+      <br>
+     <input type="submit" value="actualizar"/>
+      <br>
+  </div>
+     <br>
+</form>
+<center><h1>Borre a un paciente</h1></center>
+<br>
+<form action="/home/borrar" method="POST">
+  <div>
+      <label>DNI:</label>
+      <br>
+      <input type="number" id="DNI" name="DNI"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <br>
+      <input type="submit" value="borrar"/>
+      <br>
+  </div>
+     <br>
+</form>
+
+<h1>Consultas:</h1>
+<br>
+<ul id="consultas">
+  {% for consulta in consultas %}
+  <li><input class="check-completed" data-id="{{consulta.dni}}" type="checkbox" {% if consulta.completed %} checked {% endif %} /> Nombre: {{consulta.nombre}} Dia: {{consulta.dia}} Mes: {{consulta.mes}} Numero de celular: {{consulta.numero}}
+      <button class='delete-button'  data-id="{{consulta.dni}}">&cross;</button>
+  </li>
+  {% endfor %}
+</ul>
+
+<h1>Pacientes:</h1>
+<br>
+<table id="pacientes">
+  <tr>
+    <th>DNI</th>
+    <th>NOMBRE</th>
+  </tr>
+  {% for paciente in pacientes %}
+  <tr>
+    <td>
+      {{paciente.dni}}
+    </td>
+    <td>
+      {{paciente.nombre}}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<script>
+  const items = document.querySelectorAll('.delete-button');
+  for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      item.onclick = function(e) {
+          const consulta_dni = e.target.dataset['id'];
+          fetch('/home/'+consulta_dni+'/delete-consulta', {
+              method: 'DELETE'
+          })
+          .then(function(){
+              console.log('event: ', e);
+              const item = e.target.parentElement;
+              item.remove();
+          });
+      }
+  }
+
+  const checkboxes = document.querySelectorAll('.check-completed')
+  for (let i = 0; i < checkboxes.length; i++) {
+      const checkbox = checkboxes[i];
+      checkbox.onchange = function(e) {
+          console.log(e);
+          const newCompleted = e.target.checked;
+          const consulta_dni = e.target.dataset['id'];
+          
+          fetch('/home/'+consulta_dni+'/complete-consulta', {
+              method: 'POST',
+              body: JSON.stringify({
+                  'completed': newCompleted
+              }),
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+          .catch(function(error){
+              document.getElementById('error').className = '';
+          });
+      }
+  }
+</script>
+
+
+</body>
+</html>

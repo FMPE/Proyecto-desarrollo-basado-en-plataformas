@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+ 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrese o haga login</title>
+    <link rel="stylesheet" href="../static/css/styleerror.css" type="text/css">
+  <style>
+      .hidden {
+          display: none
+      }
+  </style>
+  <style>
+      .toshow {
+          display: none
+      }
+  </style>
+    <style>
+form {
+     text-align: center;
+}
+    </style>
+    <style>
+    body{
+
+        background-image: url("../static/css/blueprint.jpg");
+}
+form {
+     text-align: center;
+}
+</style>
+</head>
+ 
+<body>
+<center><h1>Ocurrio un error al iniciar sesion</h1></center>
+<center><h1>Si no esta registrado, registrese aqui</h1></center>
+<form id="form">
+  <div>
+      <label>DNI:</label>
+      <br>
+      <input type="number" id="DNI" name="DNI"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <label>contraseña:</label>
+      <br>
+      <input type="password" id="contrasenha" name="contrasenha"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <label>numero de doctor:</label>
+      <br>
+      <input type="number" id="numero" name="numero"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <br>
+      <input type="submit" value="Registrar"/>
+      <br>
+  </div>
+     <br>
+</form>
+<div id="error" class="hidden">Ocurrió un error!</div>
+<div id="ok" class="toshow">REGISTRADO CON EXITO!</div>
+<ul id="doctores">
+  {% for d in data %}
+  <li>{{d.dni}}</li>
+  {% endfor %}
+</ul>
+<script>
+  document.getElementById('form').onsubmit = function(e) {
+      e.preventDefault();
+      fetch('/doctor/crear', {
+          method: 'POST',
+          body: JSON.stringify({
+              'DNI': document.getElementById('DNI').value,
+              'contrasenha': document.getElementById('contrasenha').value,
+              'numero': document.getElementById('numero').value
+          }),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+          .then(function(response){
+              return response.json();
+              return self.wsgi_app(environ, start_response);
+          })
+          .then(function(jsonResponse) {
+              const liItem = document.createElement('LI');
+              liItem.innerHTML = jsonResponse['DNI'];
+              document.getElementById('doctores').appendChild(liItem);
+              document.getElementById('error').className = 'hidden';
+              document.getElementById('ok').className = '';
+          })
+          .catch(function(error) {
+              document.getElementById('error').className = '';
+              document.getElementById('ok').className = 'hidden';
+          });
+  }
+</script>
+<center><h1>Vuelva a intentar hacer login</h1></center>
+<form action="/doctor/login" method="POST">
+  <div>
+     <label>DNI:</label>
+      <br>
+      <input type="number" id="DNI" name="DNI"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <label>contraseña:</label>
+      <br>
+      <input type="password" id="contrasenha" name="contrasenha"/>
+      <br>
+  </div>
+     <br>
+  <div>
+      <br>
+      <input type="submit" value="login"/>
+      <br>
+  </div>
+</form>
+
+</body>
+ 
+</html>

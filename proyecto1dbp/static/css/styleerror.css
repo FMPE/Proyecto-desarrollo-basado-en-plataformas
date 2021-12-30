@@ -1,0 +1,12 @@
+ body{
+      color: white;
+            background-image: url("iron.gif");
+
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: bg 1s infinite linear;
+  }
+form {
+     text-align: center;
+}

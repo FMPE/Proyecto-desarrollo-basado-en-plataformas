@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="../static/css/stylelogin.css" type="text/css">
+    <style>
+form {
+     text-align: center;
+}
+}</style>
+    <style>
+    body{
+
+        background-image: url("../static/css/blueprint.jpg");
+}
+form {
+     text-align: center;
+}
+</style>
+  <style>
+      .hidden {
+          display: none
+      }
+  </style>
+  <style>
+      .toshow {
+          display: none
+      }
+  </style>
+</head>
+<body>
+<form id="form">
+  <div>
+      <label>DNI:</label>
+      <br>
+      <input type="number" id="DNI" name="DNI"/>
+  </div>
+     <br>
+  <div>
+      <label>contraseña:</label>
+      <br>
+      <input type="password" id="contrasenha" name="contrasenha"/>
+  </div>
+     <br>
+  <div>
+      <label>numero de doctor:</label>
+      <br>
+      <input type="number" id="numero" name="numero"/>
+  </div>
+     <br>
+  <div>
+      <input type="submit" value="Registrar"/>
+      <br>
+  </div>
+     <br>
+</form>
+<div id="error" class="hidden">Ocurrió un error!</div>
+<div id="ok" class="toshow">REGISTRADO CON EXITO!</div>
+<ul id="login">
+  {% for d in data %}
+  <li>{{d.dni}}</li>
+    {% endfor %}
+</ul>
